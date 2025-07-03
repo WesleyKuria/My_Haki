@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+
+    /* Kenya Flag Colors */
+    --kenya-black: 0 0% 0%;
+    --kenya-red: 0 100% 50%;
+    --kenya-white: 0 0% 100%;
+    --kenya-green: 120 100% 25%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-kenya-black {
+    color: hsl(var(--kenya-black));
+  }
+  .text-kenya-red {
+    color: hsl(var(--kenya-red));
+  }
+  .text-kenya-white {
+    color: hsl(var(--kenya-white));
+  }
+  .text-kenya-green {
+    color: hsl(var(--kenya-green));
+  }
+  .bg-kenya-black {
+    background-color: hsl(var(--kenya-black));
+  }
+  .bg-kenya-red {
+    background-color: hsl(var(--kenya-red));
+  }
+  .bg-kenya-white {
+    background-color: hsl(var(--kenya-white));
+  }
+  .bg-kenya-green {
+    background-color: hsl(var(--kenya-green));
+  }
+  .border-kenya-red {
+    border-color: hsl(var(--kenya-red));
+  }
+  .border-kenya-green {
+    border-color: hsl(var(--kenya-green));
+  }
+  .border-kenya-black {
+    border-color: hsl(var(--kenya-black));
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--kenya-red));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 100% 40%);
+}
+
+/* Animation for emergency button */
+@keyframes pulse-red {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+  }
+}
+
+.emergency-pulse {
+  animation: pulse-red 2s infinite;
+}
+
+/* Kenya flag stripe pattern */
+.kenya-stripes {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--kenya-black)) 0%,
+    hsl(var(--kenya-black)) 20%,
+    hsl(var(--kenya-red)) 20%,
+    hsl(var(--kenya-red)) 40%,
+    hsl(var(--kenya-white)) 40%,
+    hsl(var(--kenya-white)) 60%,
+    hsl(var(--kenya-red)) 60%,
+    hsl(var(--kenya-red)) 80%,
+    hsl(var(--kenya-green)) 80%,
+    hsl(var(--kenya-green)) 100%
+  );
+}
+
+/* Responsive text utilities */
+.text-responsive-xl {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+
+.text-responsive-lg {
+  @apply text-xl sm:text-2xl md:text-3xl;
+}
+
+.text-responsive-base {
+  @apply text-base sm:text-lg md:text-xl;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  @apply focus:outline-none focus:ring-2 focus:ring-kenya-red focus:ring-offset-2;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
